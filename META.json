@@ -43,6 +43,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/hirose31/Parse-Daemontools-Service/issues"
+      },
+      "homepage" : "https://github.com/hirose31/Parse-Daemontools-Service",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/hirose31/Parse-Daemontools-Service.git",
+         "web" : "https://github.com/hirose31/Parse-Daemontools-Service"
+      }
+   },
    "version" : "0.01"
 }
 
