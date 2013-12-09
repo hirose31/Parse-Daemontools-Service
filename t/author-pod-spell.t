@@ -21,6 +21,7 @@ __DATA__
 HIROSE
 Masaaki
 hirose31
-lib
-Foo
-Bar
+Str
+daemontools
+env
+

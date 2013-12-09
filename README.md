@@ -3,7 +3,7 @@
 
 # NAME
 
-Parse::Daemontools::Service - fixme
+Parse::Daemontools::Service - Retrieve status and env of service under daemontools
 
 # INSTALLATION
 
@@ -16,30 +16,57 @@ To install this module, run the following commands:
 
 # SYNOPSIS
 
+Normally, Parse::Daemontools::Service requires root privileges because need to read /service/DAEMON/supervise/status file.
+
     use Parse::Daemontools::Service;
-    fixme
+    
+
+    my $ds = Parse::Daemontools::Service->new;
+    my $status = $ds->status("qmail");
+    
+
+    my $status = $ds->status("my-daemon",
+                             {
+                                 env_dir => "/service/my-daemon/my-env-dir",
+                             });
+    
+
+    my $status = $ds->status("my-daemon",
+                             {
+                                 env_dir => [
+                                     "/service/my-daemon/env",
+                                     "/service/my-daemon/my-env-dir",
+                                 ],
+                             });
 
 # DESCRIPTION
 
-Parse::Daemontools::Service is fixme
+Parse::Daemontools::Service retrieves status and env of service under daemontools.
 
 # METHODS
 
-- __method\_name__($message:Str)
+- __new__({ base\_dir => Str })
 
-    fixme
+    base\_dir (optional): base directory of daemontools. Default is "/service"
 
-# ENVIRONMENT VARIABLES
+- __status__($service\_name:Str, { env\_dir => Str|ArrayRef\[Str\] })
 
-- HOME
+    Return status and env of $service\_name as following HashRef.
 
-    Used to determine the user's home directory.
+        +{
+            service  => Str, # "/service/my-daemon"
+            pid      => Int, # PID of daemon process
+            seconds  => Int, # uptime of this daemon process
+            start_at => Int, # UNIX time of this daemon process started at
+            status   => Str, # "up" | "down"
+            info     => Str, # "" | "normally down" | "normally up" | ...
+            env      => {    # environment variables in envdir
+                BAR => "bar",
+                FOO => "foo"
+            },
+        },
 
-# FILES
-
-- `/path/to/config.ph`
-
-    設定ファイル。
+    Default env\_dir is "/service/my-daemon/env". You can specify env\_dir(s) by Str or ArrayRef. When you specify more than one env\_dirs, same key are overridden by latter env\_dir.
 
 # AUTHOR
 
@@ -55,8 +82,7 @@ patches and collaborators are welcome.
 
 # SEE ALSO
 
-[Module::Hoge](http://search.cpan.org/perldoc?Module::Hoge),
-ls(1), cd(1)
+svstat(1)
 
 # COPYRIGHT
 
