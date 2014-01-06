@@ -20,17 +20,14 @@ Normally, Parse::Daemontools::Service requires root privileges because need to r
 
     use Parse::Daemontools::Service;
     
-
     my $ds = Parse::Daemontools::Service->new;
     my $status = $ds->status("qmail");
     
-
     my $status = $ds->status("my-daemon",
                              {
                                  env_dir => "/service/my-daemon/my-env-dir",
                              });
     
-
     my $status = $ds->status("my-daemon",
                              {
                                  env_dir => [

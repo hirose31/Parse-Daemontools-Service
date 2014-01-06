@@ -2,6 +2,9 @@ Revision history for Parse-Daemontools-Service
 
 {{$NEXT}}
 
+0.02  2014-01-06 18:30:50 JST
+        - Support 32bit architectures (fixed #1)
+
 0.01  2013-12-09 13:42:29 JST
     [NEW FEATURES]
         - Initial version
