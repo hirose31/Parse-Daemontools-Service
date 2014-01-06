@@ -3,6 +3,7 @@ package Parse::Daemontools::Service;
 use strict;
 use warnings;
 use 5.008_005;
+use bigint;
 
 our $VERSION = '0.01';
 
