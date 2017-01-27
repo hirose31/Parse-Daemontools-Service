@@ -1,11 +1,9 @@
 
 BEGIN {
-    if ($ENV{AUTHOR_TESTING} && $ENV{AUTHOR_TESTING} >= 2) {
-        ; # go ahead
-    } else {
-        require Test::More;
-        Test::More::plan(skip_all => 'these tests are for testing by the author');
-    }
+  unless ($ENV{AUTHOR_TESTING}) {
+    require Test::More;
+    Test::More::plan(skip_all => 'these tests are for testing by the author');
+  }
 }
 
 use strict;
